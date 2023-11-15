@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# This file is written by `Manoj Paramsetti`
+# Minimalistic System Info `motd`
+# Any modification or claims are not encouraged
+# Check the LICENSE for more info
+# Modified By: -
+
+# Fetch OS information
+os_info=$(cat /etc/os-release | awk '/^PRETTY_NAME=/ {sub("^PRETTY_NAME=", "", $1); for(i=1;i<=NF;i++) printf "%s ", $i}')
+
+# Fetch CPU information
+cpu_info=$(lscpu | awk '/^Model name:/ { for(i=3; i<=NF; i++) printf "%s ", $i; printf "\n" }')
+
+# Fetch Memory information
+mem_info=$(free -h --mega | awk '/^Mem:/ {printf "%s/%s\tAvailable: %s ",$3, $2, $7}')
+
+# System Uptime
+up_time=$(uptime -p | awk '{for(i=2; i<=NF;i++) printf "%s ",$i; print ""}')
+
+# IP Addresses
+ip_info=$(ip addr show | awk '/^[0-9]+:/ {interface=$2} /inet / {split($2, a, "brd"); printf "%s %s\n", interface, a[1]}')
+
+# Storage info
+storage_info=$(df -Bh | awk '/^\/dev/ {sub("^/dev/", "", $1); printf "%s:\t%s/%s\tUsed: %s\tAvailable: %s\t%s \n",$1, $3, $2, $5, $4, $6}')
+
+# Display information
+echo -e "\nOS: $os_info"
+echo "CPU Info: $cpu_info"
+echo "Memory Info: $mem_info"
+echo "Uptime: $up_time"
+
+echo -e "\nAvaialble IPs:\n==============\n$ip_info"
+
+
+echo -e "\nStorage Info:\n$storage_info"
