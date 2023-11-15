@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# This file is written by `Manoj Paramsetti`
-# Minimalistic System Info `motd`
-# Any modification or claims are not encouraged
-# Check the LICENSE for more info
+# This file is written by `Manoj Paramsetti`.
+# Minimalistic System Info `motd`.
+# Any modification or claims are not encouraged without prior notice.
+# Check the LICENSE for more info.
 # Modified By: -
 
 # Fetch OS information
