@@ -30,7 +30,7 @@ echo "CPU Info: $cpu_info"
 echo "Memory Info: $mem_info"
 echo "Uptime: $up_time"
 
-echo -e "\nAvaialble IPs:\n==============\n$ip_info"
+echo -e "\nAvailable IPs:\n==============\n$ip_info"
 
 
 echo -e "\nStorage Info:\n$storage_info"
